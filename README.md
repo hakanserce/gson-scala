@@ -36,8 +36,8 @@ val parsedObject = Json.fromJson(testRecordAsJson, classOf[TestRecord])
 ##Generic JSON parsing (without mapping to )
 
 ```scala
-  val testRecordAsJson = """{"a":"x","b":"y","c":"z","d":["1","2","3"]}"""
-  val parsedJson = Json.parse(testInput1)
+val testInput = """{ "a":"1", "b":"2013-11-12T08:00:00.000Z", "c":"dsfsfddsf"}"""
+val parsedJson = Json.parse(testInput)
 ```
 
 At this point you can access fields via accessors:
