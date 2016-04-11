@@ -43,10 +43,10 @@ val parsedObject = Json.fromJson(testRecordAsJson, classOf[TestRecord])
 At this point you can access fields via accessors:
 
 ```scala
-    assert(parsedJson("a").reqStr === "1", "reqStr")
-    assert(parsedJson("b").date.map(_.getYear()).get === 2013, "date")
-    assert(parsedJson("non-existing").date.map(_.getYear()) === None, "non-existing date")
-    assert(parsedJson("non-existing").str === None, "non-existing str")
+    assert(parsedJson("a").reqStr === "1")
+    assert(parsedJson("b").date.map(_.getYear()).get === 2013)
+    assert(parsedJson("non-existing").date.map(_.getYear()) === None)
+    assert(parsedJson("non-existing").str === None)
 ```
 
 ### Generic parsing features
