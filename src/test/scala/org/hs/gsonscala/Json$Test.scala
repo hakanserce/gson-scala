@@ -2,15 +2,17 @@ package org.hs.gsonscala
 
 import org.scalatest.FunSuite
 
+case class TestRecord(val a: String, val b: String, val c: Option[String], val d: List[String])
+
 /**
   * Created by serhakan on 4/11/16.
   */
 class Json$Test extends FunSuite {
-  case class TestRecord(val a: String, val b: String, val c: Option[String], val d: List[String])
   val testInput1 = """{ "a":"1", "b":"2013-11-12T08:00:00.000Z", "c":"dsfsfddsf"}"""
   val testRecord = new TestRecord("x", "y", Option("z"), List("1", "2", "3"))
   val testRecordAsJson = """{"a":"x","b":"y","c":"z","d":["1","2","3"]}"""
   val parsedJson = Json.parse(testInput1)
+  val parsedJsonWithMissingOptions = Json.fromJson("""{"a":"x","b":"y"}""", classOf[TestRecord])
 
   test("testToJson") {
     val writtenJson = Json.toJson(testRecord)
@@ -28,9 +30,13 @@ class Json$Test extends FunSuite {
     assert(parsedJson.map.toList.map(e => e._1) === List("a", "b", "c"))
   }
 
-  ignore("testFromJson") {
+  test("test fromJson") {
     val parsedObject = Json.fromJson(testRecordAsJson, classOf[TestRecord])
     assert(parsedObject === testRecord)
+  }
+
+  ignore("test fromJson with Option") {
+    assert(parsedJsonWithMissingOptions === TestRecord("x","y", None, List()))
   }
 
 }
