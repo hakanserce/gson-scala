@@ -8,7 +8,7 @@ import java.lang.reflect.{ParameterizedType => JavaParameterizedType}
 
 import org.hs.gsonscala.typeadapters.{ListTypeAdapter, OptionTypeAdapter}
 
-class Json(val json:Option[gson.JsonElement]) {
+class Json(val json:Option[gson.JsonElement]) extends Serializable {
 
   //works if this is a JsonArray
   def get(index:Int):Json = {
