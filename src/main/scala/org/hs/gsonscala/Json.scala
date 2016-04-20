@@ -60,7 +60,7 @@ class Json(val json:Option[gson.JsonElement]) extends Serializable {
   }
 
   def int = {
-    json.map(_.getAsInt())
+    json.map(_.getAsInt().toInt)
   }
 
   def date:Option[ZonedDateTime] = {
@@ -70,6 +70,8 @@ class Json(val json:Option[gson.JsonElement]) extends Serializable {
   def first = {
     new Json(json.map(_.getAsJsonObject().entrySet().iterator().next().getValue()))
   }
+
+  override def toString():String = json.map(_.toString).getOrElse("")
 
 }
 
