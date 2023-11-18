@@ -6,7 +6,7 @@ Features:
 * Scala Option support
 * Generic parsing (without mapping to a class)
 
-##Converting Objects to JSON
+## Converting Objects to JSON
 
 ```scala
 case class TestRecord(val a: String, val b: String, val c: Option[String], val d: List[String])
@@ -23,7 +23,7 @@ creates the following JSON string:
 
 Note that pretty-printing vs compact printing is available among many other features supported by Gson via `Json.gsonInstance` variable.
 
-##Parsing Objects from JSON
+## Parsing Objects from JSON
 
 
 ```scala
@@ -33,7 +33,7 @@ val testRecordAsJson = """{"a":"x","b":"y","c":"z","d":["1","2","3"]}"""
 val parsedObject = Json.fromJson(testRecordAsJson, classOf[TestRecord])
 ```
 
-##Generic JSON parsing (without mapping to )
+## Generic JSON parsing (without mapping to )
 
 ```scala
 val testInput = """{ "a":"1", "b":"2013-11-12T08:00:00.000Z", "c":"dsfsfddsf"}"""
